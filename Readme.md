@@ -2,10 +2,6 @@
 
 Ext.ux.CordovaPushNotifications provides simple usage of pushnotifications plugin for cordova and phonegap
 
-## Tutorial
-`Ext.ux.Deferred` can be used to defer asynchronous processes.
-The first thing to do is to make a new deferred:
-
 ## Usage
 Load Sencha package:
 
@@ -31,7 +27,21 @@ Now, you are ready to use it in your code as follows:
               badge: "true",
               sound: "true"
            },
-           windows: {}
+           windows: {},          
+            listeners: {
+                'registration': function() {
+                    console.log(" registration listener");
+                },
+                'registered': function() {
+                    console.log(" registered  with gcm server ");
+                },
+                'notification': function(data) {
+                    console.log(" notification listener");
+                },
+                'error': function(error) {
+                    console.log("error contact administrator" + error.message);
+                }
+            }
        });
 ```
 
